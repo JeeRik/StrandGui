@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MotionSelectActivity">
+
+    <TextView
+        android:id="@+id/textFastForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onIconClicked"
+        android:text="LLL"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textForward"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text="LL"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textSlowForward"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textFastForward"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <TextView
+        android:id="@+id/textSlowForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text="L"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textStop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textForward"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <TextView
+        android:id="@+id/textStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text=" 0 "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textSlowBackward"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textSlowForward"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <TextView
+        android:id="@+id/textSlowBackward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text=" > "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textBackward"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textStop"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <TextView
+        android:id="@+id/textBackward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text=">>"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textFastBackward"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textSlowBackward"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <TextView
+        android:id="@+id/textFastBackward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onIconClicked"
+        android:text=">>>"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textBackward"
+        app:layout_constraintTop_toTopOf="@+id/textFastForward" />
+
+    <SeekBar
+        android:id="@+id/seekBarMotion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:max="6"
+        android:progress="3"
+        app:layout_constraintEnd_toEndOf="@+id/textFastBackward"
+        app:layout_constraintStart_toStartOf="@+id/textFastForward"
+        app:layout_constraintTop_toBottomOf="@+id/textStop" />
+</android.support.constraint.ConstraintLayout>

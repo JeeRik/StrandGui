@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="onUpdate"
+        android:text="Connecting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textTransition" />
+
+    <TextView
+        android:id="@+id/textTransitionHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onTransitionRequest"
+        android:text="Transition:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textTransition"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Filter:"
+        android:textSize="18sp"
+        android:onClick="onFilterRequest"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textFilter"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textTransition"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onTransitionRequest"
+        android:text="none"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textTransitionHeader"
+        app:layout_constraintEnd_toStartOf="@+id/buttonUpdate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textTransitionHeader" />
+
+    <TextView
+        android:id="@+id/textFilter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="none"
+        android:textSize="24sp"
+        android:onClick="onFilterRequest"
+        app:layout_constraintBottom_toTopOf="@+id/textTransition"
+        app:layout_constraintEnd_toStartOf="@+id/buttonUpdate"
+        app:layout_constraintStart_toEndOf="@+id/textTransitionHeader" />
+
+    <RadioButton
+        android:id="@+id/radioColor"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:checked="false"
+        android:duplicateParentState="false"
+        android:text="Color"
+        android:onClick="onRadioColorClick"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioRainbow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onRadioRainbowClick"
+        android:text="Rainbow"
+        app:layout_constraintEnd_toEndOf="@+id/radioColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioColor" />
+
+    <RadioButton
+        android:id="@+id/radioVertigo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:checked="false"
+        android:onClick="onRadioVertigoClick"
+        android:text="Vertigo"
+        app:layout_constraintEnd_toEndOf="@+id/radioRainbow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioRainbow" />
+
+    <Button
+        android:id="@+id/buttonColorColor"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="#ff000000"
+        android:onClick="onButtonColorColorClick"
+        android:text="Black"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/radioColor"
+        app:layout_constraintStart_toEndOf="@+id/radioColor" />
+
+    <TextView
+        android:id="@+id/textRainbowMotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onRainbowMotionClick"
+        android:text="Motion  0"
+        app:layout_constraintBaseline_toBaselineOf="@+id/radioRainbow"
+        app:layout_constraintStart_toEndOf="@+id/radioRainbow" />
+
+    <TextView
+        android:id="@+id/textRainbowCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:text="Single"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textRainbowMotion"
+        app:layout_constraintStart_toEndOf="@+id/radioRainbow" />
+
+    <RadioButton
+        android:id="@+id/radioPulse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onRadioPulseClick"
+        android:text="Pulse"
+        app:layout_constraintEnd_toEndOf="@+id/radioVertigo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioVertigo" />
+
+    <Button
+        android:id="@+id/buttonPulseColor"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="#ff000000"
+        android:onClick="onButtonPulseColorClick"
+        android:text="Black"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/radioPulse"
+        app:layout_constraintEnd_toEndOf="@+id/buttonColorColor"
+        app:layout_constraintStart_toEndOf="@+id/radioPulse" />
+
+    <RadioButton
+        android:id="@+id/radioWave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="onRadioWaveClick"
+        android:text="Wave"
+        app:layout_constraintEnd_toEndOf="@+id/radioPulse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioPulse" />
+
+    <RadioButton
+        android:id="@+id/radioFireplace"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:onClick="onRadioFireplaceClick"
+        android:text="Fireplace"
+        app:layout_constraintEnd_toEndOf="@+id/radioWave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioWave" />
+
+    <RadioButton
+        android:id="@+id/radioFireworks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:onClick="onRadioFireworksClick"
+        android:text="Fireworks"
+        app:layout_constraintEnd_toEndOf="@+id/radioFireplace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioFireplace" />
+
+    <Button
+        android:id="@+id/buttonWaveColor"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="#ff000000"
+        android:onClick="onButtonWaveColorClick"
+        android:text="Black"
+        android:textColor="#ffffffff"
+        android:textSize="12sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/radioWave"
+        app:layout_constraintEnd_toEndOf="@+id/buttonPulseColor"
+        app:layout_constraintStart_toEndOf="@+id/radioWave" />
+
+</android.support.constraint.ConstraintLayout>
