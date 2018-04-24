@@ -15,13 +15,13 @@ public class MotionSelectActivity extends Activity {
 
     public static String getVectorText(int motion) {
         switch (motion) {
-            case -3: return "<<<";
-            case -2: return "<<";
+            case -7: return "<<<";
+            case -3: return "<<";
             case -1: return "<";
             case 0: return "0";
             case 1: return ">";
-            case 2: return ">>";
-            case 3: return ">>>";
+            case 3: return ">>";
+            case 7: return ">>>";
             default:
                 return "0";
         }
@@ -29,11 +29,11 @@ public class MotionSelectActivity extends Activity {
     public static int getVectorValue(String text) {
         if (text.equals("0")) return 0;
         if (text.equals(">")) return 1;
-        if (text.equals(">>")) return 2;
-        if (text.equals(">>>")) return 3;
+        if (text.equals(">>")) return 3;
+        if (text.equals(">>>")) return 7;
         if (text.equals("<")) return -1;
-        if (text.equals("<<")) return -2;
-        if (text.equals("<<<")) return -3;
+        if (text.equals("<<")) return -3;
+        if (text.equals("<<<")) return -7;
         return 0;
     }
 

@@ -4,47 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransitionSelectActivity">
+    tools:context=".VertigoSpeedActivity">
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="82dp">
 
         <RadioButton
-            android:id="@+id/radioNone"
+            android:id="@+id/radioHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioSelect"
-            android:text="none" />
+            android:onClick="onVertigoSpeedSelect"
+            android:text="1 hour" />
 
         <RadioButton
-            android:id="@+id/radioBlend"
+            android:id="@+id/radioMinutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioSelect"
-            android:text="blend" />
+            android:onClick="onVertigoSpeedSelect"
+            android:text="5 minutes" />
 
         <RadioButton
-            android:id="@+id/radioPop"
+            android:id="@+id/radioDefault"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioSelect"
-            android:text="fade and rise" />
+            android:onClick="onVertigoSpeedSelect"
+            android:text="30 seconds" />
 
         <RadioButton
-            android:id="@+id/radioWrap"
+            android:id="@+id/radioVzzum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onRadioSelect"
-            android:text="wrap" />
-
+            android:onClick="onVertigoSpeedSelect"
+            android:text="vžžžžžžum!" />
     </RadioGroup>
 </android.support.constraint.ConstraintLayout>

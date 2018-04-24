@@ -31,6 +31,7 @@ public class TransitionSelectActivity extends Activity {
             ((RadioButton) findViewById(R.id.radioNone)).setChecked(true);
         }
 
+        ((RadioButton) findViewById(R.id.radioPop)).setText("fade & rise");
         this.defaultOption = option;
     }
 

@@ -139,9 +139,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
+        android:onClick="onRainbowMultipleClick"
         android:text="Single"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textRainbowMotion"
-        app:layout_constraintStart_toEndOf="@+id/radioRainbow" />
+        app:layout_constraintStart_toEndOf="@+id/radioRainbow"
+        app:layout_constraintTop_toTopOf="@+id/textRainbowMotion" />
 
     <RadioButton
         android:id="@+id/radioPulse"
@@ -220,5 +221,39 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/radioWave"
         app:layout_constraintEnd_toEndOf="@+id/buttonPulseColor"
         app:layout_constraintStart_toEndOf="@+id/radioWave" />
+
+    <TextView
+        android:id="@+id/textVertigoSpeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:onClick="onRadioVertigoClick"
+        android:text="30 seconds"
+        app:layout_constraintBaseline_toBaselineOf="@+id/radioVertigo"
+        app:layout_constraintStart_toEndOf="@+id/radioVertigo" />
+
+    <RadioButton
+        android:id="@+id/radioClock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Clock"
+        android:onClick="onRadioClockClick"
+        app:layout_constraintEnd_toEndOf="@+id/radioFireworks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioFireworks" />
+
+    <RadioButton
+        android:id="@+id/radioSwarovski"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Swarovski"
+        android:onClick="onRadioSwarovskiClick"
+        app:layout_constraintEnd_toEndOf="@+id/radioClock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioClock" />
 
 </android.support.constraint.ConstraintLayout>

@@ -28,10 +28,18 @@
             android:name=".MotionSelectActivity"
             android:label="Select motion speed"
             android:theme="@android:style/Theme.Holo.Dialog" />
-        <activity android:name=".FilterSelectActivity"
+        <activity
+            android:name=".FilterSelectActivity"
             android:label="Select filter" />
-        <activity android:name=".FilterBlockConfigActivity"
+        <activity
+            android:name=".FilterBlockConfigActivity"
             android:label="Select mode"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+        <activity
+            android:name=".RainbowMultipleActivity"
+            android:theme="@android:style/Theme.Holo.Dialog" />
+        <activity android:name=".VertigoSpeedActivity"
+            android:label="Rainbow cycle interval"
             android:theme="@android:style/Theme.Holo.Dialog" />
     </application>
 

@@ -12,8 +12,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-import cz.maara.androidtest.CommunicatorThread;
-
 public class MainActivity extends Activity {
 
     public static final String[] RPI_ADDRESSES = new String[]{"192.168.0.22"};
@@ -31,13 +29,21 @@ public class MainActivity extends Activity {
     private String
             transition = "none",
             filter = "none";
-    private int rainbowMotion = 0;
+
+    private int
+            rainbowMotion = 0;
+    private double
+            vertigoSpeed = 1;
+
+    private String rainbowMultiple = "single";
 
     private final int
             COLOR_COLOR_REQUEST_CODE = 1,
             PULSE_COLOR_REQUEST_CODE = 2,
             WAVE_COLOR_REQUEST_CODE = 3,
             RAINBOW_MOTION_REQUEST_CODE = 4,
+            RAINBOW_MULTIPLE_REQUEST_CODE = 5,
+            VERTIGO_SPEED_REQUEST_CODE = 6,
             FILTER_SELECT_REQUEST_CODE = 20,
             TRANSITION_SELECT_REQUEST_CODE = 30;
 
@@ -86,21 +92,27 @@ public class MainActivity extends Activity {
                 findViewById(R.id.radioWave),
                 findViewById(R.id.radioFireplace),
                 findViewById(R.id.radioFireworks),
+                findViewById(R.id.radioClock),
+                findViewById(R.id.radioSwarovski),
         };
 
-        for (View view : moduleRadios) {
-            views.add(view);
-        }
+        views.addAll(Arrays.asList(moduleRadios));
         views.add(findViewById(R.id.buttonColorColor));
         views.add(findViewById(R.id.buttonPulseColor));
         views.add(findViewById(R.id.buttonWaveColor));
         views.add(findViewById(R.id.textRainbowMotion));
         views.add(findViewById(R.id.textRainbowCount));
         views.add(findViewById(R.id.buttonUpdate));
+        views.add(findViewById(R.id.textVertigoSpeed));
+
 
 
         views.remove(findViewById(R.id.radioFireworks));
         views.remove(findViewById(R.id.radioFireplace));
+
+        com.sendMessage("m color black", null);
+        com.sendMessage("f none", null);
+        com.sendMessage("t none", null);
 
         selectModule(0);
     }
@@ -128,7 +140,9 @@ public class MainActivity extends Activity {
     }
 
     protected void onRadioVertigoClick(View view) {
+        Intent intent = new Intent(this, VertigoSpeedActivity.class);
         selectModule(2);
+        startActivityForResult(intent, VERTIGO_SPEED_REQUEST_CODE);
     }
 
     protected void onRadioPulseClick(View view) {
@@ -146,6 +160,17 @@ public class MainActivity extends Activity {
     protected void onRadioFireworksClick(View view) {
         selectModule(6);
     }
+    protected void onRadioClockClick(View view) {
+        selectModule(7);
+        selectFilter("none");
+        update();
+    }
+    protected void onRadioSwarovskiClick(View view) {
+        selectModule(8);
+        selectFilter("none");
+        update();
+    }
+
 
     public void onActivityResult(int requestCode, int result_code, Intent data) {
         System.out.println("Result received: code=" + requestCode + ", resultCode=" + result_code);
@@ -194,19 +219,25 @@ public class MainActivity extends Activity {
                 selectModule(1);
                 break;
             }
+            case RAINBOW_MULTIPLE_REQUEST_CODE: {
+                String multiple = data.getStringExtra(RainbowMultipleActivity.RAINBOW_MULTIPLE_OPTION_EXTRA);
+                rainbowMultiple = multiple;
+                TextView view = findViewById(R.id.textRainbowCount);
+                view.setText(multiple);
+                selectModule(1);
+            }
+            case VERTIGO_SPEED_REQUEST_CODE: {
+                vertigoSpeed = data.getDoubleExtra(VertigoSpeedActivity.VERTIGO_SPEED_OPTION_EXTRA, 1);
+                ( (TextView) findViewById(R.id.textVertigoSpeed)).setText(data.getStringExtra(VertigoSpeedActivity.VERTIGO_SPEED_TEXT_EXTRA));
+                selectModule(2);
+            }
             case TRANSITION_SELECT_REQUEST_CODE: {
                 if (!data.hasExtra(TransitionSelectActivity.TRANSITION_SELECT_OPTION_EXTRA)) break;
-                String transition = data.getStringExtra(TransitionSelectActivity.TRANSITION_SELECT_OPTION_EXTRA);
-                ((TextView) findViewById(R.id.textTransition)).setText(transition);
-
-                this.transition = transition;
-                com.sendMessage("t " + transition, null);
+                selectTransition(data.getStringExtra(TransitionSelectActivity.TRANSITION_SELECT_OPTION_EXTRA));
                 break;
             }
             case FILTER_SELECT_REQUEST_CODE: {
-                this.filter = data.getStringExtra(FilterSelectActivity.FILTER_SELECT_OPTION);
-                ((TextView) findViewById(R.id.textFilter)).setText(this.filter.trim().split(" ")[0]);
-                com.sendMessage("f " + this.filter, null);
+                selectFilter(data.getStringExtra(FilterSelectActivity.FILTER_SELECT_OPTION));
                 break;
             }
 
@@ -249,15 +280,35 @@ public class MainActivity extends Activity {
         startActivityForResult(data, RAINBOW_MOTION_REQUEST_CODE);
     }
 
+    public void onRainbowMultipleClick(View vciew) {
+        Intent data = new Intent(this, RainbowMultipleActivity.class);
+        data.putExtra(RainbowMultipleActivity.RAINBOW_MULTIPLE_OPTION_EXTRA, rainbowMultiple);
+        startActivityForResult(data, RAINBOW_MULTIPLE_REQUEST_CODE);
+    }
+
+    private void selectFilter(String filter) {
+        this.filter = filter;
+        ((TextView) findViewById(R.id.textFilter)).setText(this.filter.trim().split(" ")[0]);
+        com.sendMessage("f " + this.filter, null);
+    }
+
+    private void selectTransition(String transition) {
+        ((TextView) findViewById(R.id.textTransition)).setText(transition);
+        this.transition = transition;
+        com.sendMessage("t " + transition, null);
+    }
+
     private String getModuleString() {
         switch (selectedModule) {
             case 0: return "color " + colorColor.name;
-            case 1: return "rainbow " + rainbowMotion;
-            case 2: return "vertigo";
+            case 1: return "rainbow " + rainbowMotion + " " + rainbowMultiple;
+            case 2: return "vertigo " + vertigoSpeed;
             case 3: return "pulse " + pulseColor.name;
             case 4: return "wave " + waveColor.name;
             case 5: return "fireplace";
             case 6: return "fireworks";
+            case 7: return "clock";
+            case 8: return "swarovski";
         }
 
         return "";

@@ -1,4 +1,4 @@
-package cz.maara.androidtest;
+package cz.maara.strandgui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
